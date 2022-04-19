@@ -1,0 +1,25 @@
+{% extends "navigation.html" %}
+{% block content %}
+    <h1>Глава {{ chapter.id }}</h1>
+    <img src="{{page.photo.url}}" alt="{{ page.photo }}">
+    <p>{{ page.description }}</p>
+    <p>{{ text }}</p>
+    {% if not end_chapter %}
+    <form action="{% url 'Choice' chapter.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in choices %}
+            <label>
+                <input type="radio" name="choice_id" value="{{ choice.pk }}">
+            </label>{{ choice.action }}<br>
+            <hr>
+        {% endfor %}
+        <input type="submit" value="Выбрать">
+    </form>
+        {% else %}
+        <a href="{% url 'Chapter' chapter.next_chapter %}"><b>Следующая глава</b></a>
+        {% if chapter.id > 1 %}
+            <a href="{% url 'Chapter' chapter.prev_chapter %}"><b>Предыдущая глава</b></a>
+            {% endif %}
+    {% endif %}
+
+{% endblock  %}
