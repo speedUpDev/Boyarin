@@ -1,4 +1,8 @@
 {% extends "navigation.html" %}
 {% block content %}
-    Конец
+    <h1>Конец</h1>
+    <img src="{{score.last_chapter.page.photo.url}}" alt="{{ score.last_chapter.page.photo }}">
+    <p>{{ score.last_chapter.page.description }}</p>
+    <p>{{ text }}</p>
+    <a href="{% url 'restart' %}">Начать сначала</a>
 {% endblock %}

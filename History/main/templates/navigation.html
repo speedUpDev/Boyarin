@@ -12,7 +12,14 @@
     {% if request.user.is_authenticated %}
         <b>{{ user.first_name }} {{ user.last_name }}</b>
         <a href="{% url 'logout' %}">Выйти</a>
-        <h1>{{ score.cur_score }}</h1>
+        {% if request.path != '/rules/' and request.path != '/final/' %}
+        <h1>Текущий счет: {{ score.cur_score }}</h1>
+        {% endif %}
+        {% if request.path == '/' and score.cur_score < score.max_score %}
+        <h1>Лучший результат: {{ score.max_score }}</h1>
+            {% elif request.path == '/' %}
+            <h1>Это лучшая попытка</h1>
+        {% endif %}
         {% else %}
         <a href="{% url 'login' %}">Войти</a>
     {% endif %}

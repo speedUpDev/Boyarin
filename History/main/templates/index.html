@@ -1,6 +1,10 @@
 {% extends "navigation.html" %}
 {% block content %}
     {% if request.user.is_authenticated %}
-    <a href="{% url 'Chapter' score.last_chapter.id %}">{{ button }}</a>
+        {% if score.cur_score == 0 %}
+            <a href="{% url 'Annotation' 1%}">Начать игру</a>
+            {% else %}
+            <a href="{% url 'Chapter' score.last_chapter.id %}">{{ button }}</a>
+        {% endif %}
     {% endif %}
 {% endblock %}

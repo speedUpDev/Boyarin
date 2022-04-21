@@ -1,0 +1,9 @@
+{% extends "navigation.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <p>Ваш счет за игру - <b>{{ score.cur_score }}</b> </p>
+    <p>{{ text }}</p>
+        <a href="{% url 'restart' %}">Начать заново</a>
+    {% endif %}
+{% endblock %}

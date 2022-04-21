@@ -34,7 +34,7 @@ class Scores(models.Model):
     last_chapter = models.ForeignKey('Chapter', on_delete=models.PROTECT, null=True)
     progress = models.IntegerField(default=0)
     passed = models.BooleanField(default=False)
-    last_choice = models.ForeignKey('Choice', on_delete=models.CASCADE, null=True)
+    last_choice = models.ForeignKey('Choice', on_delete=models.CASCADE, null=True, default=None)
 
 
 class Chapter(models.Model):
@@ -45,3 +45,13 @@ class Chapter(models.Model):
 
     def prev_chapter(self):
         return self.id - 1
+
+
+class Annotation(Page):
+    annot_id = models.IntegerField()
+
+    def next_annotation(self):
+        return self.annot_id + 1
+
+    def prev_annotation(self):
+        return self.annot_id - 1
