@@ -1,0 +1,12 @@
+{% extends "navigation.html" %}
+{% block content %}
+    <h1>Трофеи</h1>
+    {% for item in items %}
+        {% autoescape off %}
+        <img src="{{item.photo.url}}" alt="{{ item.photo }}">
+        <b>{{ item.name }}</b><br>
+        <i>{{ item.text }}</i>
+        <hr>
+        {% endautoescape %}
+    {% endfor %}
+{% endblock %}

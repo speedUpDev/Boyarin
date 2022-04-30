@@ -5,17 +5,23 @@
     {% autoescape off %}
     <p>{{ page.description }}</p>
     <p>{{ text }}</p>
+    {% for item in items %}
+        <b>{{ item.name }} (+{{ item.points }})</b><br>
+        <i>{{ item.text }}</i><br>
+    {% endfor %}
     {% endautoescape %}
     {% if not end_chapter %}
-            <form action="{% url 'Choice' chapter.id %}" method="post">
+            <form action="{% url 'Choice' chapter.id %}" method="post" onsubmit="checkSelected()">
                 {% csrf_token %}
                 {% for choice in choices %}
+                {% autoescape off %}
                     <label>
-                        <input type="radio" name="choice_id" value="{{ choice.pk }}">
+                        <input type="radio" name="choice_id" id="choice_id" value="{{ choice.id }}">
                     </label>{{ choice.action }}<br>
+                    {% endautoescape %}
                     <hr>
                 {% endfor %}
-                    <input type="submit" value="Выбрать">
+                    <input type="submit" value="Выбрать" >
             </form>
         {% else %}
             {% if chapter.page.last %}
@@ -24,5 +30,5 @@
                 <a href="{% url 'Chapter' chapter.next_chapter %}"><b>Следующая глава</b></a>
             {% endif %}
     {% endif %}
-
+<script src="../../static/js/checkSelected.js"></script>
 {% endblock  %}

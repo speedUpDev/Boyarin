@@ -2,7 +2,11 @@
 {% block content %}
     {% if request.user.is_authenticated %}
         {% if score.cur_score == 0 %}
-            <a href="{% url 'Annotation' 1%}">Начать игру</a>
+            {% if score.last_choice != None and not score.last_choice.result %}
+                <a href="{% url 'Endgame' %}">Закончить игру</a>
+                {% else %}
+                    <a href="{% url 'Annotation' 1%}">Начать игру</a>
+            {% endif %}
             {% else %}
             <a href="{% url 'Chapter' score.last_chapter.id %}">{{ button }}</a>
         {% endif %}
