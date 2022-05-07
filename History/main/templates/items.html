@@ -3,8 +3,8 @@
     <h1>Трофеи</h1>
     {% for item in items %}
         {% autoescape off %}
-        <img src="{{item.photo.url}}" alt="{{ item.photo }}">
-        <b>{{ item.name }}</b><br>
+        <img src="{{item.photo.url}}" alt="{{ item.photo }}" class="item_image">
+        <b class="item_name">{{ item.name }}</b><br>
         <i>{{ item.text }}</i>
         <hr>
         {% endautoescape %}

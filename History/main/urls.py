@@ -19,4 +19,5 @@ urlpatterns = [
     path('login/', LoginUser.as_view(), {'title': 'Авторизация'}, name='login'),
     path('registration/', RegisterUser.as_view(), {'title': 'Регистрация'}, name="registration"),
     path('restart', RestartView, name='restart'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

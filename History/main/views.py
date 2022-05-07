@@ -7,12 +7,14 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
+from History.settings import STATIC_ROOT
 from .forms import LoginUserForm, RegisterUserForm
 from .models import *
 
 
 def index(request):
     button = ''
+    print(STATIC_ROOT)
     if request.user.is_authenticated:
         if Scores.objects.filter(user=request.user).exists():
             score = Scores.objects.get(user=request.user)
