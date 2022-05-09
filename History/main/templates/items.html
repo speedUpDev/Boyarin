@@ -4,7 +4,9 @@
     {% for item in items %}
         {% autoescape off %}
         <img src="{{item.photo.url}}" alt="{{ item.photo }}" class="item_image">
-        <b class="item_name">{{ item.name }}</b><br>
+        <br>
+        <b class="item_name">{{ item.name }}</b>
+        <br>
         <i>{{ item.text }}</i>
         <hr>
         {% endautoescape %}
