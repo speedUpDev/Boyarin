@@ -1,9 +1,7 @@
-function checkSelected(){
-     let choices = document.getElementsByName('choice_id');
-     for(let choice in choices) {
-         if(choice.checked){
-            return true;
-         }
-     }
-     return alert('NO');
+let radios = document.forms["choices"].elements["choice_id"];
+const btn = document.querySelector('#btn');
+for(let i = 0, max = radios.length; i < max; i++) {
+    radios[i].onclick = function() {
+        btn.disabled = false;
+    }
 }

@@ -11,7 +11,7 @@
     {% endfor %}
     {% endautoescape %}
     {% if not end_chapter %}
-            <form action="{% url 'Choice' chapter.id %}" method="post" onsubmit="checkSelected()">
+            <form action="{% url 'Choice' chapter.id %}" method="post" name="choices">
                 {% csrf_token %}
                 {% for choice in choices %}
                 {% autoescape off %}
@@ -21,7 +21,7 @@
                     {% endautoescape %}
                     <hr>
                 {% endfor %}
-                    <input type="submit" value="Выбрать" >
+                    <input type="submit" value="Выбрать" id="btn" disabled>
             </form>
         {% else %}
             {% if chapter.page.last %}
@@ -30,5 +30,6 @@
                 <a href="{% url 'Chapter' chapter.next_chapter %}"><b>Следующая глава</b></a>
             {% endif %}
     {% endif %}
+
 <script src="../static/js/checkSelected.js"></script>
 {% endblock  %}
