@@ -11,6 +11,7 @@
     {% endfor %}
     {% endautoescape %}
     {% if not end_chapter %}
+        <hr>
             <form action="{% url 'Choice' chapter.id %}" method="post" name="choices">
                 {% csrf_token %}
                 {% for choice in choices %}

@@ -6,11 +6,11 @@
     <p>{{ annotation.text }}</p>
     {% endautoescape %}
     {% if annotation.annot_id == 3 %}
-        <a href="{% url 'Chapter' 1%}">Next</a>
+        <a href="{% url 'Chapter' 1%}">Вперед</a>
     {% else %}
-        <a href="{% url 'Annotation' annotation.next_annotation %}">Next</a>
+        <a href="{% url 'Annotation' annotation.next_annotation %}">Вперед</a>
     {% endif %}
     {% if annotation.annot_id != 1 %}
-        <a href="{% url 'Annotation' annotation.prev_annotation %}">Previous</a>
+        <a href="{% url 'Annotation' annotation.prev_annotation %}">Назад</a>
     {% endif %}
 {% endblock %}
